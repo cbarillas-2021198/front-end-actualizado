@@ -13,6 +13,7 @@ export const CuentasA = () => {
   const [cuentaTipo, setCuentaTipo] = useState('');
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [cuentaToDelete, setCuentaToDelete] = useState(null);
+  
 
   useEffect(() => {
     obtenerUsuarios();
@@ -31,6 +32,10 @@ export const CuentasA = () => {
   const obtenerCuentas = async () => {
     try {
       const response = await axios.get('http://localhost:8080/api/cuenta/get');
+      const cuentasData = response.data.cuentas;
+
+      
+      setCuentas(cuentasData);
       setCuentas(response.data.cuentas);
     } catch (error) {
       console.log(error);
@@ -91,6 +96,8 @@ export const CuentasA = () => {
       setShowConfirmModal(false);
     }
   };
+
+  obtenerCuentas();
 
   const agregarCuenta = async () => {
     try {
@@ -200,6 +207,8 @@ export const CuentasA = () => {
       </Modal>
     </div>
   );
+
+
 };
 
 export default CuentasA;

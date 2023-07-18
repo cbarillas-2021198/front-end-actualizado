@@ -4,6 +4,7 @@ import { AuthContext } from "../context/AuthContext";
 import { useForm } from "../../hooks/useForm";
 import { apiLogin } from "../api/apiAuthUser";
 import './LoginPage.css';
+import logo from '..//..//..//assets/slogan.jpg';
 
 export const LoginPage = () => {
   const { userName, password, onInputChange, onResetForm } = useForm({
@@ -53,38 +54,64 @@ export const LoginPage = () => {
   };
 
   return (
-    <>
-      <div className="containerjuanon mt-5">
-        <div></div>
-        <h1>Login</h1>
-        <hr />
-        <form onSubmit={onSubmitLogin}>
-          <div className="mb-3">
-            <label className="form-label">Nombre</label>
-            <input
-              type="userName"
-              className="form-control"
-              aria-describedby="userNameHelp"
-              name="userName"
-              value={userName}
-              onChange={onInputChange}
-            />
+
+    <div style={{ minHeight: "100vh", display: "flex", justifyContent: "center", alignItems: "center" }}>
+      <div class="container-login">
+        <input type="checkbox" id="flip" />
+        <div class="cover">
+          <div class="front">
+            <img src={logo}  alt="" />
+            <div class="text">
+              <span class="text-1"></span>
+              <br />
+              <span class="text-1"></span>
+              <span class="text-2"></span>
+            </div>
           </div>
-          <div className="mb-3">
-            <label className="form-label">Password</label>
-            <input
-              type="password"
-              className="form-control"
-              name="password"
-              value={password}
-              onChange={onInputChange}
-            />
+          <div class="back">
+            
+            
           </div>
-          <button type="submit" className="btn btn-primary">
-            Login
-          </button>
-        </form>
+        </div>
+        <div class="forms">
+          <div class="form-content">
+            <div class="login-form">
+              <div class="title">Login</div>
+              <form onSubmit={onSubmitLogin}>
+                <div class="input-boxes">
+                  <div class="input-box">
+                    <i class="fas fa-envelope"></i>
+                    <input
+                      type="text"
+                      placeholder="Enter your email"
+                      required
+                      name="userName"
+                      value={userName}
+                      onChange={onInputChange}
+                    />
+                  </div>
+                  <div class="input-box">
+                    <i class="fas fa-lock"></i>
+                    <input
+                      type="password"
+                      placeholder="Enter your password"
+                      required
+                      name="password"
+                      value={password}
+                      onChange={onInputChange}
+                    />
+                  </div>
+                 
+                  <div class="button input-box">
+                    <input type="submit" value="Submit" />
+                  </div>
+                  
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
-    </>
+    </div>
   );
 };
